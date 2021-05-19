@@ -1,5 +1,5 @@
 # Bitrix24
- This is an option for deploying a boxed version of [CRM Bitrix24](https://www.bitrix24.ru/) in an isolated Docker environment
+ This is an option for deploying a boxed version of [CRM - Bitrix24](https://www.bitrix24.ru/) in an isolated Docker environment
 
 ## Dependencies
 1. Docker
