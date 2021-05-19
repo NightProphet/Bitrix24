@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+
+  db:
+    image: mariadb
+    container_name: db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+    volumes:
+      - ./db:/var/lib/mysql
+    ports:
+      - 127.0.0.1:3306:3306
+    networks:
+      - bitrix24-network
+
+  phpmyadmin:
+    image: phpmyadmin
+    container_name: db_control_panel
+    restart: always
+    ports:
+      - 127.0.0.1:8080:80
+    networks:
+      - bitrix24-network
+
+  webserver:
+    build: ./www
+    container_name: webserver
+    restart: always
+    user: 1000:1000
+    volumes:
+      - ./www/resources:/var/www/html
+    ports:
+      - 80:80
+      - 443:443
+    networks:
+      - bitrix24-network
+
+networks:
+    bitrix24-network:
+        driver: bridge
